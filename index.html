@@ -699,7 +699,8 @@
         border-radius: 0;
         box-shadow: none;
         max-width: 100%;
-        min-height: 100vh; /* Stretch to fill paper height naturally! */
+        min-height: 100vh;
+        /* Stretch to fill paper height naturally! */
         animation: none;
       }
 
@@ -744,6 +745,7 @@
         grid-template-columns: 1fr;
       }
     }
+
     /* ═══════════════════════════════════════════════
        INTERACTIVE DEMO (CUCUMBER API)
        ═══════════════════════════════════════════════ */
@@ -758,7 +760,7 @@
       display: flex;
       flex-direction: column;
     }
-    
+
     .terminal-header {
       background: #323233;
       padding: 8px 16px;
@@ -769,44 +771,66 @@
       color: #9cdcfe;
       border-bottom: 1px solid #222;
     }
-    
+
     .mac-dots {
       display: flex;
       gap: 6px;
       margin-right: 12px;
     }
+
     .mac-dot {
-      width: 10px; height: 10px; border-radius: 50%;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
     }
-    .mac-dot.red { background: #ff5f56; }
-    .mac-dot.yellow { background: #ffbd2e; }
-    .mac-dot.green { background: #27c93f; }
-    
+
+    .mac-dot.red {
+      background: #ff5f56;
+    }
+
+    .mac-dot.yellow {
+      background: #ffbd2e;
+    }
+
+    .mac-dot.green {
+      background: #27c93f;
+    }
+
     .terminal-body {
       display: grid;
       grid-template-columns: 1fr 1fr;
       min-height: 220px;
     }
-    
-    .panel-left, .panel-right {
+
+    .panel-left,
+    .panel-right {
       padding: 16px;
       overflow-y: auto;
       max-height: 350px;
     }
-    
+
     .panel-left {
       background: #1e1e1e;
       border-right: 1px solid #333;
     }
-    
+
     .panel-right {
       background: #0d1117;
       color: #c9d1d9;
     }
 
-    .gherkin-kw { color: #c678dd; font-weight: bold; }
-    .gherkin-text { color: #abb2bf; }
-    .gherkin-str { color: #98c379; }
+    .gherkin-kw {
+      color: #c678dd;
+      font-weight: bold;
+    }
+
+    .gherkin-text {
+      color: #abb2bf;
+    }
+
+    .gherkin-str {
+      color: #98c379;
+    }
 
     .btn-run {
       background: var(--main-accent);
@@ -824,9 +848,20 @@
       margin-top: 10px;
       transition: background 0.2s, transform 0.1s;
     }
-    .btn-run:hover { background: var(--main-accent-dark); }
-    .btn-run:active { transform: scale(0.98); }
-    .btn-run:disabled { background: var(--main-text-muted); cursor: not-allowed; transform: none; }
+
+    .btn-run:hover {
+      background: var(--main-accent-dark);
+    }
+
+    .btn-run:active {
+      transform: scale(0.98);
+    }
+
+    .btn-run:disabled {
+      background: var(--main-text-muted);
+      cursor: not-allowed;
+      transform: none;
+    }
 
     .log-line {
       margin-bottom: 4px;
@@ -834,15 +869,32 @@
       opacity: 0;
       animation: fadeIn 0.3s forwards;
     }
-    
-    .log-success { color: #7ee787; }
-    .log-info { color: #79c0ff; }
-    .log-json { color: #a5d6ff; padding-left: 12px; white-space: pre; font-family: var(--font-mono); }
 
-    @keyframes fadeIn { to { opacity: 1; } }
+    .log-success {
+      color: #7ee787;
+    }
+
+    .log-info {
+      color: #79c0ff;
+    }
+
+    .log-json {
+      color: #a5d6ff;
+      padding-left: 12px;
+      white-space: pre;
+      font-family: var(--font-mono);
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
 
     @media print {
-      .cv-interactive-section { display: none !important; }
+      .cv-interactive-section {
+        display: none !important;
+      }
     }
   </style>
 </head>
@@ -1024,7 +1076,7 @@
         <div class="profile-summary">
           Result-driven <strong>Senior QA Automation Engineer & SDET</strong> with
           <span class="profile-highlight">10+ years</span> of experience delivering high-quality software across
-          <strong>large-scale payment platforms and financial systems</strong>. Proven track record in architecting
+          <strong>large-scale healthcare platforms and financial systems</strong>. Proven track record in architecting
           robust
           BDD automation frameworks using Java, Cucumber, and Selenium, while integrating tests into CI/CD pipelines.
           Currently pioneering <strong>AI-augmented quality engineering</strong> workflows using
@@ -1200,7 +1252,9 @@
           <div class="section-title">Automation Live Demo</div>
         </div>
         <p style="font-size: 0.82rem; color: var(--main-text-muted); line-height: 1.5;">
-          Press the button below to see a live simulation of a <strong>RestAssured + Cucumber BDD</strong> automated API test validating a Payment Gateway. This demonstrates my approach to writing clear specifications and robust backend tests.
+          Press the button below to see a live simulation of a <strong>RestAssured + Cucumber BDD</strong> automated API
+          test validating a Payment Gateway. This demonstrates my approach to writing clear specifications and robust
+          backend tests.
         </p>
 
         <button id="run-demo-btn" class="btn-run">▶ Run Cucumber Suite</button>
@@ -1217,7 +1271,8 @@
           <div class="terminal-body">
             <!-- Gherkin Feature File -->
             <div class="panel-left">
-              <pre style="font-size: 0.72rem; margin:0; line-height: 1.4;"><code class="gherkin-text"><span class="gherkin-kw">Feature:</span> API Payment Gateway
+              <pre
+                style="font-size: 0.72rem; margin:0; line-height: 1.4;"><code class="gherkin-text"><span class="gherkin-kw">Feature:</span> API Payment Gateway
 
   <span class="gherkin-kw">Scenario:</span> Successfully process a credit card payment
     <span class="gherkin-kw">Given</span> that the user has a valid auth token
@@ -1237,10 +1292,10 @@
   </div>
 
   <script>
-    document.getElementById('run-demo-btn').addEventListener('click', function() {
+    document.getElementById('run-demo-btn').addEventListener('click', function () {
       const consoleDiv = document.getElementById('demo-console');
       const btn = this;
-      
+
       // Reset
       consoleDiv.innerHTML = '';
       btn.disabled = true;
