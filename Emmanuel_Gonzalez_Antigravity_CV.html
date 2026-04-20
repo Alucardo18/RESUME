@@ -744,6 +744,106 @@
         grid-template-columns: 1fr;
       }
     }
+    /* ═══════════════════════════════════════════════
+       INTERACTIVE DEMO (CUCUMBER API)
+       ═══════════════════════════════════════════════ */
+    .interactive-demo-container {
+      margin-top: 16px;
+      border-radius: 8px;
+      background: #1e1e1e;
+      color: #d4d4d4;
+      font-family: var(--font-mono);
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .terminal-header {
+      background: #323233;
+      padding: 8px 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.7rem;
+      color: #9cdcfe;
+      border-bottom: 1px solid #222;
+    }
+    
+    .mac-dots {
+      display: flex;
+      gap: 6px;
+      margin-right: 12px;
+    }
+    .mac-dot {
+      width: 10px; height: 10px; border-radius: 50%;
+    }
+    .mac-dot.red { background: #ff5f56; }
+    .mac-dot.yellow { background: #ffbd2e; }
+    .mac-dot.green { background: #27c93f; }
+    
+    .terminal-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 220px;
+    }
+    
+    .panel-left, .panel-right {
+      padding: 16px;
+      overflow-y: auto;
+      max-height: 350px;
+    }
+    
+    .panel-left {
+      background: #1e1e1e;
+      border-right: 1px solid #333;
+    }
+    
+    .panel-right {
+      background: #0d1117;
+      color: #c9d1d9;
+    }
+
+    .gherkin-kw { color: #c678dd; font-weight: bold; }
+    .gherkin-text { color: #abb2bf; }
+    .gherkin-str { color: #98c379; }
+
+    .btn-run {
+      background: var(--main-accent);
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.8rem;
+      font-family: var(--font-sans);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 10px;
+      transition: background 0.2s, transform 0.1s;
+    }
+    .btn-run:hover { background: var(--main-accent-dark); }
+    .btn-run:active { transform: scale(0.98); }
+    .btn-run:disabled { background: var(--main-text-muted); cursor: not-allowed; transform: none; }
+
+    .log-line {
+      margin-bottom: 4px;
+      font-size: 0.72rem;
+      opacity: 0;
+      animation: fadeIn 0.3s forwards;
+    }
+    
+    .log-success { color: #7ee787; }
+    .log-info { color: #79c0ff; }
+    .log-json { color: #a5d6ff; padding-left: 12px; white-space: pre; font-family: var(--font-mono); }
+
+    @keyframes fadeIn { to { opacity: 1; } }
+
+    @media print {
+      .cv-interactive-section { display: none !important; }
+    }
   </style>
 </head>
 
@@ -1093,9 +1193,93 @@
         </div>
       </section>
 
+      <!-- Interactive Demo Section -->
+      <section class="main-section cv-interactive-section" id="interactive-demo">
+        <div class="section-header">
+          <div class="section-icon violet">🚀</div>
+          <div class="section-title">Automation Live Demo</div>
+        </div>
+        <p style="font-size: 0.82rem; color: var(--main-text-muted); line-height: 1.5;">
+          Press the button below to see a live simulation of a <strong>RestAssured + Cucumber BDD</strong> automated API test validating a Payment Gateway. This demonstrates my approach to writing clear specifications and robust backend tests.
+        </p>
+
+        <button id="run-demo-btn" class="btn-run">▶ Run Cucumber Suite</button>
+
+        <div class="interactive-demo-container">
+          <div class="terminal-header">
+            <div class="mac-dots">
+              <div class="mac-dot red"></div>
+              <div class="mac-dot yellow"></div>
+              <div class="mac-dot green"></div>
+            </div>
+            ~/projects/payment-automation — bash
+          </div>
+          <div class="terminal-body">
+            <!-- Gherkin Feature File -->
+            <div class="panel-left">
+              <pre style="font-size: 0.72rem; margin:0; line-height: 1.4;"><code class="gherkin-text"><span class="gherkin-kw">Feature:</span> API Payment Gateway
+
+  <span class="gherkin-kw">Scenario:</span> Successfully process a credit card payment
+    <span class="gherkin-kw">Given</span> that the user has a valid auth token
+    <span class="gherkin-kw">When</span> a POST req is made to <span class="gherkin-str">"/api/v1/payments"</span>
+    <span class="gherkin-kw">Then</span> the API should respond with status <span class="gherkin-str">200</span>
+    <span class="gherkin-kw">And</span> the response payload contains <span class="gherkin-str">"APPROVED"</span></code></pre>
+            </div>
+            <!-- Test Output Console -->
+            <div class="panel-right" id="demo-console">
+              <div style="color: #6e7681; font-size: 0.72rem; font-style: italic;">Waiting for test execution...</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
     </main>
   </div>
 
+  <script>
+    document.getElementById('run-demo-btn').addEventListener('click', function() {
+      const consoleDiv = document.getElementById('demo-console');
+      const btn = this;
+      
+      // Reset
+      consoleDiv.innerHTML = '';
+      btn.disabled = true;
+      btn.innerHTML = '⏳ Running...';
+
+      const d = new Date();
+      const timestamp = d.toISOString();
+
+      const logs = [
+        { text: '> mvn test -Dtest=PaymentRunner', class: 'log-info', delay: 200 },
+        { text: 'Starting RestAssured BDD Tests...', class: 'log-text', delay: 800 },
+        { text: 'Feature: API Payment Gateway', class: 'log-info', delay: 1300 },
+        { text: '  Scenario: Successfully process a credit card payment', class: 'log-info', delay: 1700 },
+        { text: '    ✔ Given that the user has a valid auth token', class: 'log-success', delay: 2100 },
+        { text: '    ✔ When a POST req is made to "/api/v1/payments"', class: 'log-success', delay: 2700 },
+        { text: '    ✔ Then the API should respond with status 200', class: 'log-success', delay: 3000 },
+        { text: '    ✔ And the response payload contains "APPROVED"', class: 'log-success', delay: 3300 },
+        { text: '\nResponse JSON snippet:', class: 'log-info', delay: 3800 },
+        { text: '{\n  "transactionId": "tx_A59B21",\n  "status": "APPROVED",\n  "timestamp": "' + timestamp + '"\n}', class: 'log-json', delay: 4000 },
+        { text: '\n1 Scenarios (1 passed)\n4 Steps (4 passed)', class: 'log-success', delay: 4700 },
+        { text: 'BUILD SUCCESS in 3.42s', class: 'log-info', delay: 5000 }
+      ];
+
+      logs.forEach(log => {
+        setTimeout(() => {
+          const p = document.createElement('div');
+          p.className = 'log-line ' + (log.class || '');
+          p.innerText = log.text;
+          consoleDiv.appendChild(p);
+          consoleDiv.scrollTop = consoleDiv.scrollHeight;
+        }, log.delay);
+      });
+
+      setTimeout(() => {
+        btn.disabled = false;
+        btn.innerHTML = '↻ Re-run Suite';
+      }, 5300);
+    });
+  </script>
 </body>
 
 </html>
