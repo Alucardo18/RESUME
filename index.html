@@ -344,6 +344,68 @@
       transition: width 1s ease-out;
     }
 
+    /* --- Sidebar: Download Button --- */
+    .download-container {
+      margin-top: 24px;
+      padding: 0 4px;
+    }
+
+    .btn-download {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 12px;
+      background: linear-gradient(135deg, var(--sidebar-accent), #818cf8);
+      color: var(--sidebar-bg);
+      text-decoration: none;
+      border-radius: 12px;
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      box-shadow: 0 8px 20px -6px rgba(56, 189, 248, 0.5);
+      position: relative;
+      overflow: hidden;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-download::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.3),
+        transparent
+      );
+      transition: 0.6s;
+    }
+
+    .btn-download:hover::before {
+      left: 100%;
+    }
+
+    .btn-download:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 12px 25px -8px rgba(56, 189, 248, 0.6);
+      color: white;
+    }
+
+    .btn-download:active {
+      transform: translateY(0) scale(0.98);
+    }
+
+    .btn-download .icon {
+      font-size: 1.1rem;
+    }
+
     /* ═══════════════════════════════════════════════
        MAIN CONTENT
        ═══════════════════════════════════════════════ */
@@ -892,7 +954,8 @@
     }
 
     @media print {
-      .cv-interactive-section {
+      .cv-interactive-section,
+      .download-container {
         display: none !important;
       }
     }
@@ -914,6 +977,11 @@
         <div class="sidebar-name">Emmanuel<br>Gonzalez L.</div>
         <div class="sidebar-title">Senior QA Automation Engineer</div>
         <div class="sidebar-tagline">Quality Architect · SDET · US Tourist Visa Holder</div>
+        <div class="download-container">
+          <a href="Emmanuel_Gonzalez_Antigravity_CV.pdf" class="btn-download" download>
+            <span class="icon">📄</span> Download PDF Version
+          </a>
+        </div>
       </div>
 
       <!-- Contact -->
