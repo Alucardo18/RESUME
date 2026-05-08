@@ -1048,11 +1048,17 @@
     <span class="gherkin-kw">Given</span> auth token is valid
     <span class="gherkin-kw">When</span> POST to <span class="gherkin-str">"/api/pay"</span>
     <span class="gherkin-kw">Then</span> status is <span class="gherkin-str">200</span>
+    <span class="gherkin-kw">And</span> body contains:
+      | <span class="gherkin-str">Field</span>  | <span class="gherkin-str">Value</span>    |
+      | <span class="gherkin-str">status</span> | <span class="gherkin-str">APPROVED</span> |
 
   <span class="gherkin-kw">Scenario:</span> Patient Data (FHIR)
     <span class="gherkin-kw">Given</span> patient ID <span class="gherkin-str">"P-88"</span>
     <span class="gherkin-kw">When</span> GET <span class="gherkin-str">"/fhir/Patient/88"</span>
-    <span class="gherkin-kw">Then</span> status is <span class="gherkin-str">200</span></code></pre>
+    <span class="gherkin-kw">Then</span> status is <span class="gherkin-str">200</span>
+    <span class="gherkin-kw">And</span> body contains:
+      | <span class="gherkin-str">Field</span>    | <span class="gherkin-str">Value</span>   |
+      | <span class="gherkin-str">resource</span> | <span class="gherkin-str">Patient</span> |</code></pre>
             </div>
             <div class="panel-right" id="demo-console">
               <div style="color: #6e7681; font-style: italic;">Waiting for test execution...</div>
@@ -1096,17 +1102,23 @@
         { text: 'Starting Enterprise BDD Suite...', class: 'log-text', delay: 800 },
         
         { text: '\n[TEST 1: FINTECH GATEWAY]', class: 'log-info', delay: 1300 },
-        { text: '✔ Given auth token is valid', class: 'log-success', delay: 1800 },
-        { text: '✔ When POST request to "/api/pay"', class: 'log-success', delay: 2300 },
-        { text: '✔ Then status is 200 (APPROVED)', class: 'log-success', delay: 2700 },
+        { text: '✔ Given auth token is valid', class: 'log-success', delay: 1600 },
+        { text: '✔ When POST request to "/api/pay"', class: 'log-success', delay: 1900 },
+        { text: '✔ Then status is 200', class: 'log-success', delay: 2100 },
+        { text: 'Response JSON:', class: 'log-info', delay: 2300 },
+        { text: '{\n  "id": "tx_442",\n  "status": "APPROVED"\n}', class: 'log-json', delay: 2500 },
+        { text: '✔ And body matches Data Table', class: 'log-success', delay: 2800 },
         
         { text: '\n[TEST 2: HEALTHCARE FHIR]', class: 'log-info', delay: 3500 },
-        { text: '✔ Given patient ID "P-88" is active', class: 'log-success', delay: 4000 },
-        { text: '✔ When GET request to "/fhir/Patient/88"', class: 'log-success', delay: 4500 },
-        { text: '✔ Then status is 200 (OK)', class: 'log-success', delay: 4900 },
+        { text: '✔ Given patient ID "P-88" is active', class: 'log-success', delay: 3800 },
+        { text: '✔ When GET request to "/fhir/Patient/88"', class: 'log-success', delay: 4100 },
+        { text: '✔ Then status is 200', class: 'log-success', delay: 4300 },
+        { text: 'Response JSON:', class: 'log-info', delay: 4500 },
+        { text: '{\n  "resource": "Patient",\n  "id": "P-88"\n}', class: 'log-json', delay: 4700 },
+        { text: '✔ And body matches Data Table', class: 'log-success', delay: 5000 },
         
         { text: '\nFinal Test Results:', class: 'log-info', delay: 5500 },
-        { text: '2 Scenarios (2 passed)\n6 Steps (6 passed)', class: 'log-success', delay: 5800 },
+        { text: '2 Scenarios (2 passed)\n8 Steps (8 passed)', class: 'log-success', delay: 5800 },
         { text: 'BUILD SUCCESS', class: 'log-info', delay: 6200 }
       ];
 
