@@ -1043,12 +1043,16 @@
           </div>
           <div class="terminal-body">
             <div class="panel-left">
-              <pre><code class="gherkin-text"><span class="gherkin-kw">Feature:</span> Healthcare API (FHIR)
-  <span class="gherkin-kw">Scenario:</span> Retrieve Patient Data
-    <span class="gherkin-kw">Given</span> patient ID <span class="gherkin-str">"P-8821"</span> is active
-    <span class="gherkin-kw">When</span> GET req to <span class="gherkin-str">"/fhir/Patient/P-8821"</span>
+              <pre><code class="gherkin-text"><span class="gherkin-kw">Feature:</span> Enterprise API Suite
+  <span class="gherkin-kw">Scenario:</span> Payment Processing
+    <span class="gherkin-kw">Given</span> auth token is valid
+    <span class="gherkin-kw">When</span> POST to <span class="gherkin-str">"/api/pay"</span>
     <span class="gherkin-kw">Then</span> status is <span class="gherkin-str">200</span>
-    <span class="gherkin-kw">And</span> body contains <span class="gherkin-str">"Patient"</span></code></pre>
+
+  <span class="gherkin-kw">Scenario:</span> Patient Data (FHIR)
+    <span class="gherkin-kw">Given</span> patient ID <span class="gherkin-str">"P-88"</span>
+    <span class="gherkin-kw">When</span> GET <span class="gherkin-str">"/fhir/Patient/88"</span>
+    <span class="gherkin-kw">Then</span> status is <span class="gherkin-str">200</span></code></pre>
             </div>
             <div class="panel-right" id="demo-console">
               <div style="color: #6e7681; font-style: italic;">Waiting for test execution...</div>
@@ -1088,18 +1092,22 @@
       const timestamp = d.toISOString();
 
       const logs = [
-        { text: '> mvn test -Dcucumber.options="classpath:features/healthcare"', class: 'log-info', delay: 200 },
-        { text: 'Starting RestAssured FHIR Suite...', class: 'log-text', delay: 800 },
-        { text: 'Feature: Healthcare API (FHIR)', class: 'log-info', delay: 1300 },
-        { text: '  Scenario: Retrieve Patient Data', class: 'log-info', delay: 1700 },
-        { text: '    ✔ Given patient ID "P-8821" is active', class: 'log-success', delay: 2100 },
-        { text: '    ✔ When GET req is made to "/fhir/Patient/P-8821"', class: 'log-success', delay: 2700 },
-        { text: '    ✔ Then status is 200', class: 'log-success', delay: 3000 },
-        { text: '    ✔ And body contains "Patient"', class: 'log-success', delay: 3300 },
-        { text: '\nResponse Body (JSON):', class: 'log-info', delay: 3800 },
-        { text: '{\n  "resourceType": "Patient",\n  "id": "P-8821",\n  "name": [{"family": "Doe", "given": ["John"]}],\n  "gender": "male",\n  "timestamp": "' + timestamp + '"\n}', class: 'log-json', delay: 4000 },
-        { text: '\n1 Scenarios (1 passed)\n4 Steps (4 passed)', class: 'log-success', delay: 4700 },
-        { text: 'BUILD SUCCESS', class: 'log-info', delay: 5000 }
+        { text: '> mvn test -Dsuite=EnterpriseAPI', class: 'log-info', delay: 200 },
+        { text: 'Starting Enterprise BDD Suite...', class: 'log-text', delay: 800 },
+        
+        { text: '\n[TEST 1: FINTECH GATEWAY]', class: 'log-info', delay: 1300 },
+        { text: '✔ Given auth token is valid', class: 'log-success', delay: 1800 },
+        { text: '✔ When POST request to "/api/pay"', class: 'log-success', delay: 2300 },
+        { text: '✔ Then status is 200 (APPROVED)', class: 'log-success', delay: 2700 },
+        
+        { text: '\n[TEST 2: HEALTHCARE FHIR]', class: 'log-info', delay: 3500 },
+        { text: '✔ Given patient ID "P-88" is active', class: 'log-success', delay: 4000 },
+        { text: '✔ When GET request to "/fhir/Patient/88"', class: 'log-success', delay: 4500 },
+        { text: '✔ Then status is 200 (OK)', class: 'log-success', delay: 4900 },
+        
+        { text: '\nFinal Test Results:', class: 'log-info', delay: 5500 },
+        { text: '2 Scenarios (2 passed)\n6 Steps (6 passed)', class: 'log-success', delay: 5800 },
+        { text: 'BUILD SUCCESS', class: 'log-info', delay: 6200 }
       ];
 
       logs.forEach(log => {
@@ -1115,7 +1123,7 @@
       setTimeout(() => {
         btn.disabled = false;
         btn.innerHTML = '↻ Re-run Suite';
-      }, 5300);
+      }, 6500);
     });
 
     // --- Chatbot Logic ---
