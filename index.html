@@ -552,6 +552,84 @@
       color: var(--main-text-muted);
     }
 
+    /* --- AI Workflow --- */
+    .workflow-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .workflow-card {
+      padding: 12px;
+      background: #f8fafc;
+      border: 1px solid var(--section-border);
+      border-radius: 10px;
+      text-align: center;
+      transition: 0.3s;
+    }
+
+    .workflow-card:hover { border-color: var(--main-accent); background: white; transform: translateY(-2px); }
+
+    .workflow-icon { font-size: 1.2rem; margin-bottom: 6px; }
+    .workflow-title { font-size: 0.75rem; font-weight: 700; color: var(--main-text); }
+    .workflow-desc { font-size: 0.65rem; color: var(--main-text-muted); line-height: 1.3; margin-top: 4px; }
+
+    /* --- Timeline --- */
+    .timeline-wrapper {
+      position: relative;
+      padding: 20px 0;
+      margin-top: 10px;
+    }
+
+    .timeline-line {
+      position: absolute;
+      left: 10px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--section-border);
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 35px;
+      margin-bottom: 20px;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: 0;
+      top: 2px;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: white;
+      border: 4px solid var(--main-accent);
+      z-index: 1;
+    }
+
+    .timeline-content {
+      background: #fafafa;
+      padding: 12px;
+      border-radius: 10px;
+      border: 1px solid var(--section-border);
+    }
+
+    .timeline-year {
+      font-size: 0.7rem;
+      font-weight: 800;
+      color: var(--main-accent);
+      font-family: var(--font-mono);
+    }
+
+    .timeline-tech {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--main-text);
+      margin-top: 2px;
+    }
+
     /* ═══════════════════════════════════════════════
        INTERACTIVE DEMO (TERMINAL)
        ═══════════════════════════════════════════════ */
@@ -918,6 +996,31 @@
         </div>
       </section>
 
+      <!-- AI-AUGMENTED WORKFLOW -->
+      <section class="main-section">
+        <div class="section-header">
+          <div class="section-icon violet">🤖</div>
+          <div class="section-title">AI-Augmented SDET Workflow</div>
+        </div>
+        <div class="workflow-grid">
+          <div class="workflow-card">
+            <div class="workflow-icon">✍️</div>
+            <div class="workflow-title">Generation</div>
+            <div class="workflow-desc">Agentic creation of complex BDD scenarios and boilerplate-free Java code using LLMs.</div>
+          </div>
+          <div class="workflow-card">
+            <div class="workflow-icon">🔍</div>
+            <div class="workflow-title">Optimization</div>
+            <div class="workflow-desc">Self-healing script adjustments and AI-driven refactoring of legacy test suites.</div>
+          </div>
+          <div class="workflow-card">
+            <div class="workflow-icon">📈</div>
+            <div class="workflow-title">Analysis</div>
+            <div class="workflow-desc">Predictive defect analysis and automated root-cause detection in failed CI runs.</div>
+          </div>
+        </div>
+      </section>
+
       <!-- METRICS -->
       <section class="main-section">
         <div class="section-header">
@@ -940,6 +1043,53 @@
           <div class="achievement-card">
             <div class="achievement-metric">E2E</div>
             <div class="achievement-label">Full-stack test coverage: API, UI, Integration & Performance</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TECH EVOLUTION TIMELINE -->
+      <section class="main-section">
+        <div class="section-header">
+          <div class="section-icon blue">⏳</div>
+          <div class="section-title">Technical Evolution Timeline</div>
+        </div>
+        <div class="timeline-wrapper">
+          <div class="timeline-line"></div>
+          
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-year">2024 — Future</div>
+              <div class="timeline-tech">Agentic QA & AI Integration</div>
+              <p style="font-size: 0.65rem; color: var(--main-text-muted);">Pioneering LLM-driven automation with Claude, Antigravity, and Cursor.</p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-year">2019 — 2023</div>
+              <div class="timeline-tech">Fintech & Data Streaming</div>
+              <p style="font-size: 0.65rem; color: var(--main-text-muted);">Scale API testing, Kafka, Microservices, and MongoDB orchestration.</p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-year">2015 — 2018</div>
+              <div class="timeline-tech">Framework Architecture</div>
+              <p style="font-size: 0.65rem; color: var(--main-text-muted);">Standardizing BDD with Java, Selenium, and Cucumber at Enterprise level.</p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content">
+              <div class="timeline-year">2009 — 2014</div>
+              <div class="timeline-tech">Foundations & Embedded</div>
+              <p style="font-size: 0.65rem; color: var(--main-text-muted);">Electronics Engineering, C++, and Autonomous Robotics competitions.</p>
+            </div>
           </div>
         </div>
       </section>
