@@ -1110,48 +1110,48 @@
 
     const responses = {
       initial: {
-        text: "¡Hola! Soy el asistente virtual de Emmanuel. Estoy diseñado para ayudarte a conocer su perfil técnico rápidamente. ¿Qué te gustaría saber?",
+        text: "Hi there! I'm Emmanuel's virtual assistant. I'm here to help you quickly explore his technical profile. What would you like to know?",
         options: [
-          { text: "👤 Resumen Profesional", action: "summary" },
-          { text: "⚡ Stack Tecnológico", action: "stack" },
-          { text: "💼 Experiencia en Pagos", action: "finance" },
-          { text: "🤖 IA & Automatización", action: "ai" },
-          { text: "📅 Disponibilidad", action: "status" }
+          { text: "👤 Professional Summary", action: "summary" },
+          { text: "⚡ Tech Stack", action: "stack" },
+          { text: "💼 Fintech Experience", action: "finance" },
+          { text: "🤖 AI & Automation", action: "ai" },
+          { text: "📅 Availability", action: "status" }
         ]
       },
       summary: {
-        text: "Emmanuel es **Senior QA Automation & SDET** con +10 años de experiencia. Se especializa en crear arquitecturas de prueba robustas para sistemas financieros y de salud a gran escala.",
+        text: "Emmanuel is a **Senior QA Automation Engineer & SDET** with 10+ years of experience. He specializes in architecting robust testing frameworks for large-scale financial and healthcare systems.",
         next: "anything_else"
       },
       stack: {
-        text: "Su stack principal es **Java/Selenium/Cucumber**. También domina REST Assured, Appium, SQL, Kafka y pipelines de CI/CD (Jenkins/GitHub Actions).",
+        text: "His core stack includes **Java, Selenium, and Cucumber**. He's also expert in REST Assured, Appium, SQL, Kafka, and CI/CD pipelines (Jenkins/GitHub Actions).",
         next: "anything_else"
       },
       finance: {
-        text: "Ha liderado la automatización en pasarelas de pago críticas, validando flujos de autorización, liquidación y conciliación con altos estándares de seguridad.",
+        text: "He has led automation for critical **payment gateways**, validating authorization, settlement, and reconciliation flows with high security standards.",
         next: "anything_else"
       },
       ai: {
-        text: "Es un pionero en **Ingeniería de Calidad aumentada por IA**. Usa agentes autónomos para acelerar la creación de casos de prueba y predecir defectos en el código.",
+        text: "He is a pioneer in **AI-Augmented Quality Engineering**, integrating autonomous agents to accelerate test generation and predict code defects.",
         next: "anything_else"
       },
       status: {
-        text: "Actualmente está abierto a nuevos retos técnicos. Cuenta con **Visa Americana B1/B2** vigente y disponibilidad para trabajo remoto o reubicación internacional.",
+        text: "He is currently open to new technical challenges. He holds an active **US B1/B2 Visa** and is available for remote work or international relocation.",
         next: "anything_else"
       },
       anything_else: {
-        text: "¿Te gustaría profundizar en algún otro punto?",
+        text: "Would you like to dive deeper into any other area?",
         options: [
-          { text: "⚡ Stack Tecnológico", action: "stack" },
-          { text: "💼 Experiencia en Pagos", action: "finance" },
-          { text: "🤖 IA & Automatización", action: "ai" },
-          { text: "📬 Contacto Directo", action: "contact" }
+          { text: "⚡ Tech Stack", action: "stack" },
+          { text: "💼 Fintech Experience", action: "finance" },
+          { text: "🤖 AI & Automation", action: "ai" },
+          { text: "📬 Direct Contact", action: "contact" }
         ]
       },
       contact: {
-        text: "¡Excelente! Puedes contactarlo directamente en:\n\n📞 +52 999 338 0373\n✉️ emanuel2464@gmail.com\n\n¿Quieres que te muestre algo más?",
+        text: "Great! You can reach him directly at:\n\n📞 +52 999 338 0373\n✉️ emanuel2464@gmail.com\n\nIs there anything else I can help you with?",
         options: [
-          { text: "Volver al inicio", action: "initial" }
+          { text: "Back to start", action: "initial" }
         ]
       }
     };
