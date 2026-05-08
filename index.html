@@ -1043,12 +1043,12 @@
           </div>
           <div class="terminal-body">
             <div class="panel-left">
-              <pre><code class="gherkin-text"><span class="gherkin-kw">Feature:</span> API Payment Gateway
-  <span class="gherkin-kw">Scenario:</span> Process Payment
-    <span class="gherkin-kw">Given</span> user has a valid auth token
-    <span class="gherkin-kw">When</span> POST req is made to <span class="gherkin-str">"/api/v1/payments"</span>
-    <span class="gherkin-kw">Then</span> API should respond with status <span class="gherkin-str">200</span>
-    <span class="gherkin-kw">And</span> payload contains <span class="gherkin-str">"APPROVED"</span></code></pre>
+              <pre><code class="gherkin-text"><span class="gherkin-kw">Feature:</span> Healthcare API (FHIR)
+  <span class="gherkin-kw">Scenario:</span> Retrieve Patient Data
+    <span class="gherkin-kw">Given</span> patient ID <span class="gherkin-str">"P-8821"</span> is active
+    <span class="gherkin-kw">When</span> GET req to <span class="gherkin-str">"/fhir/Patient/P-8821"</span>
+    <span class="gherkin-kw">Then</span> status is <span class="gherkin-str">200</span>
+    <span class="gherkin-kw">And</span> body contains <span class="gherkin-str">"Patient"</span></code></pre>
             </div>
             <div class="panel-right" id="demo-console">
               <div style="color: #6e7681; font-style: italic;">Waiting for test execution...</div>
@@ -1088,18 +1088,18 @@
       const timestamp = d.toISOString();
 
       const logs = [
-        { text: '> mvn test -Dtest=PaymentRunner', class: 'log-info', delay: 200 },
-        { text: 'Starting RestAssured BDD Tests...', class: 'log-text', delay: 800 },
-        { text: 'Feature: API Payment Gateway', class: 'log-info', delay: 1300 },
-        { text: '  Scenario: Successfully process a credit card payment', class: 'log-info', delay: 1700 },
-        { text: '    ✔ Given that the user has a valid auth token', class: 'log-success', delay: 2100 },
-        { text: '    ✔ When a POST req is made to "/api/v1/payments"', class: 'log-success', delay: 2700 },
-        { text: '    ✔ Then the API should respond with status 200', class: 'log-success', delay: 3000 },
-        { text: '    ✔ And the response payload contains "APPROVED"', class: 'log-success', delay: 3300 },
-        { text: '\nResponse JSON snippet:', class: 'log-info', delay: 3800 },
-        { text: '{\n  "transactionId": "tx_A59B21",\n  "status": "APPROVED",\n  "timestamp": "' + timestamp + '"\n}', class: 'log-json', delay: 4000 },
+        { text: '> mvn test -Dcucumber.options="classpath:features/healthcare"', class: 'log-info', delay: 200 },
+        { text: 'Starting RestAssured FHIR Suite...', class: 'log-text', delay: 800 },
+        { text: 'Feature: Healthcare API (FHIR)', class: 'log-info', delay: 1300 },
+        { text: '  Scenario: Retrieve Patient Data', class: 'log-info', delay: 1700 },
+        { text: '    ✔ Given patient ID "P-8821" is active', class: 'log-success', delay: 2100 },
+        { text: '    ✔ When GET req is made to "/fhir/Patient/P-8821"', class: 'log-success', delay: 2700 },
+        { text: '    ✔ Then status is 200', class: 'log-success', delay: 3000 },
+        { text: '    ✔ And body contains "Patient"', class: 'log-success', delay: 3300 },
+        { text: '\nResponse Body (JSON):', class: 'log-info', delay: 3800 },
+        { text: '{\n  "resourceType": "Patient",\n  "id": "P-8821",\n  "name": [{"family": "Doe", "given": ["John"]}],\n  "gender": "male",\n  "timestamp": "' + timestamp + '"\n}', class: 'log-json', delay: 4000 },
         { text: '\n1 Scenarios (1 passed)\n4 Steps (4 passed)', class: 'log-success', delay: 4700 },
-        { text: 'BUILD SUCCESS in 3.42s', class: 'log-info', delay: 5000 }
+        { text: 'BUILD SUCCESS', class: 'log-info', delay: 5000 }
       ];
 
       logs.forEach(log => {
