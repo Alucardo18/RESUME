@@ -111,28 +111,6 @@
       border-right: 1px solid rgba(255, 255, 255, 0.05);
     }
 
-    .sidebar::before {
-      content: '';
-      position: absolute;
-      top: -80px;
-      right: -80px;
-      width: 200px;
-      height: 200px;
-      background: radial-gradient(circle, var(--sidebar-accent-glow) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
-    .sidebar::after {
-      content: '';
-      position: absolute;
-      bottom: -60px;
-      left: -60px;
-      width: 180px;
-      height: 180px;
-      background: radial-gradient(circle, rgba(99, 102, 241, 0.08) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
     /* --- Sidebar: Name & Title --- */
     .sidebar-header {
       text-align: center;
@@ -155,7 +133,6 @@
       height: 100%;
       object-fit: cover;
       object-position: center 15%;
-      /* adjust to keep face centered */
     }
 
     .sidebar-name {
@@ -164,6 +141,7 @@
       letter-spacing: -0.02em;
       line-height: 1.2;
       text-transform: uppercase;
+      color: white;
     }
 
     .sidebar-title {
@@ -202,10 +180,6 @@
       gap: 8px;
     }
 
-    .sidebar-section-title .icon {
-      font-size: 0.85rem;
-    }
-
     /* --- Sidebar: Contact --- */
     .contact-list {
       list-style: none;
@@ -220,28 +194,19 @@
       margin-bottom: 8px;
     }
 
-    .contact-list li:hover {
+    .contact-list a {
+      color: inherit;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .contact-list a:hover {
       color: var(--sidebar-text);
     }
 
     .contact-list .contact-icon {
-      flex-shrink: 0;
-      width: 16px;
-      text-align: center;
       color: var(--sidebar-accent);
-      font-size: 0.8rem;
-      margin-top: 2px;
-    }
-
-    .contact-list a {
-      color: inherit;
-      text-decoration: none;
-      border-bottom: 1px solid transparent;
-      transition: border-color 0.2s;
-    }
-
-    .contact-list a:hover {
-      border-bottom-color: var(--sidebar-accent);
+      width: 16px;
     }
 
     /* --- Sidebar: Skills --- */
@@ -271,12 +236,6 @@
       color: var(--sidebar-text-muted);
     }
 
-    .skill-tag:hover {
-      background: var(--sidebar-accent-glow);
-      color: var(--sidebar-accent);
-      border-color: rgba(56, 189, 248, 0.3);
-    }
-
     .skill-tag.highlight {
       background: rgba(56, 189, 248, 0.12);
       color: var(--sidebar-accent);
@@ -298,15 +257,12 @@
     .edu-school {
       font-size: 0.7rem;
       color: var(--sidebar-text-muted);
-      margin-top: 2px;
     }
 
     .edu-year {
       font-size: 0.65rem;
       color: var(--sidebar-accent);
-      font-weight: 500;
       font-family: var(--font-mono);
-      margin-top: 2px;
     }
 
     /* --- Sidebar: Languages --- */
@@ -314,47 +270,44 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 8px;
+      margin-bottom: 4px;
     }
 
     .lang-name {
       font-size: 0.78rem;
       font-weight: 500;
+      color: var(--sidebar-text);
     }
 
     .lang-level {
       font-size: 0.65rem;
       color: var(--sidebar-accent);
-      font-weight: 500;
     }
 
     .lang-bar {
       width: 100%;
-      height: 3px;
+      height: 4px;
       background: var(--sidebar-bg-subtle);
-      border-radius: 3px;
-      margin-top: 4px;
-      overflow: hidden;
+      border-radius: 2px;
+      margin-bottom: 12px;
     }
 
     .lang-bar-fill {
       height: 100%;
-      border-radius: 3px;
-      background: linear-gradient(90deg, var(--sidebar-accent), #818cf8);
-      transition: width 1s ease-out;
+      background: var(--sidebar-accent);
+      border-radius: 2px;
     }
 
     /* --- Sidebar: Download Button --- */
     .download-container {
       margin-top: 24px;
-      padding: 0 4px;
     }
 
     .btn-download {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 12px;
+      gap: 10px;
       padding: 12px;
       background: linear-gradient(135deg, var(--sidebar-accent), #818cf8);
       color: var(--sidebar-bg);
@@ -364,46 +317,14 @@
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 0.1em;
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      transition: all 0.3s;
       box-shadow: 0 8px 20px -6px rgba(56, 189, 248, 0.5);
-      position: relative;
-      overflow: hidden;
-      border: none;
-      cursor: pointer;
-    }
-
-    .btn-download::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(255, 255, 255, 0.3),
-        transparent
-      );
-      transition: 0.6s;
-    }
-
-    .btn-download:hover::before {
-      left: 100%;
     }
 
     .btn-download:hover {
-      transform: translateY(-3px) scale(1.02);
+      transform: translateY(-2px);
       box-shadow: 0 12px 25px -8px rgba(56, 189, 248, 0.6);
       color: white;
-    }
-
-    .btn-download:active {
-      transform: translateY(0) scale(0.98);
-    }
-
-    .btn-download .icon {
-      font-size: 1.1rem;
     }
 
     /* ═══════════════════════════════════════════════
@@ -413,20 +334,15 @@
       padding: var(--page-padding) 44px;
     }
 
-    /* --- Main: Section --- */
     .main-section {
-      margin-bottom: 20px;
-    }
-
-    .main-section:last-child {
-      margin-bottom: 0;
+      margin-bottom: 30px;
     }
 
     .section-header {
       display: flex;
       align-items: center;
       gap: 10px;
-      margin-bottom: 12px;
+      margin-bottom: 16px;
     }
 
     .section-icon {
@@ -437,158 +353,102 @@
       align-items: center;
       justify-content: center;
       font-size: 1rem;
-      flex-shrink: 0;
     }
 
-    .section-icon.blue {
-      background: #eff6ff;
-      color: #2563eb;
-    }
-
-    .section-icon.emerald {
-      background: #ecfdf5;
-      color: #059669;
-    }
-
-    .section-icon.violet {
-      background: #f5f3ff;
-      color: #7c3aed;
-    }
-
-    .section-icon.amber {
-      background: #fffbeb;
-      color: #d97706;
-    }
+    .section-icon.blue { background: #eff6ff; color: #2563eb; }
+    .section-icon.emerald { background: #ecfdf5; color: #059669; }
+    .section-icon.violet { background: #f5f3ff; color: #7c3aed; }
+    .section-icon.amber { background: #fffbeb; color: #d97706; }
 
     .section-title {
       font-size: 1.05rem;
       font-weight: 800;
-      letter-spacing: -0.02em;
       text-transform: uppercase;
       color: var(--main-text);
-      position: relative;
+      letter-spacing: -0.02em;
     }
 
-    .section-title::after {
-      content: '';
-      display: block;
-      width: 40px;
-      height: 3px;
-      background: linear-gradient(90deg, var(--main-accent), #818cf8);
-      border-radius: 2px;
-      margin-top: 4px;
-    }
-
-    /* --- Main: Profile Summary --- */
     .profile-summary {
       font-size: 0.85rem;
       line-height: 1.6;
       color: var(--main-text-muted);
-      padding: 14px 18px;
+      padding: 18px;
       background: var(--highlight-bg);
-      border-radius: 8px;
+      border-radius: 12px;
       border-left: 4px solid var(--main-accent);
-      position: relative;
-    }
-
-    .profile-summary strong {
-      color: var(--main-text);
-      font-weight: 600;
     }
 
     .profile-highlight {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
       background: white;
-      padding: 2px 10px;
-      border-radius: 20px;
-      font-size: 0.78rem;
+      padding: 2px 8px;
+      border-radius: 12px;
       font-weight: 600;
       color: var(--main-accent-dark);
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
-      margin: 0 2px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
     }
 
-    /* --- Main: Experience Card --- */
+    .achievements-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .achievement-card {
+      padding: 16px;
+      border: 1px solid var(--section-border);
+      border-radius: 12px;
+      background: #fcfcfc;
+    }
+
+    .achievement-metric {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--main-accent-dark);
+      font-family: var(--font-mono);
+    }
+
+    .achievement-label {
+      font-size: 0.72rem;
+      color: var(--main-text-muted);
+      margin-top: 4px;
+    }
+
     .exp-card {
-      position: relative;
+      margin-bottom: 24px;
       padding-left: 20px;
-      margin-bottom: 16px;
-    }
-
-    .exp-card:last-child {
-      margin-bottom: 0;
+      border-left: 2px solid var(--section-border);
+      position: relative;
     }
 
     .exp-card::before {
       content: '';
       position: absolute;
-      left: 0;
-      top: 8px;
+      left: -6px;
+      top: 0;
       width: 10px;
       height: 10px;
       border-radius: 50%;
       background: var(--main-accent);
-      box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.15);
-    }
-
-    .exp-card::after {
-      content: '';
-      position: absolute;
-      left: 4px;
-      top: 22px;
-      width: 2px;
-      bottom: -16px;
-      background: var(--section-border);
-    }
-
-    .exp-card:last-child::after {
-      display: none;
-    }
-
-    .exp-card-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      flex-wrap: wrap;
-      gap: 4px;
-      margin-bottom: 2px;
     }
 
     .exp-role {
-      font-size: 0.92rem;
+      font-size: 0.95rem;
       font-weight: 700;
       color: var(--main-text);
-      letter-spacing: -0.01em;
     }
 
     .exp-period {
-      font-size: 0.7rem;
-      font-weight: 500;
+      font-size: 0.72rem;
       color: var(--main-accent);
+      font-weight: 600;
       font-family: var(--font-mono);
-      background: var(--tag-bg);
-      padding: 2px 10px;
-      border-radius: 20px;
-      border: 1px solid var(--tag-border);
     }
 
     .exp-company {
-      font-size: 0.8rem;
+      font-size: 0.82rem;
       font-weight: 600;
       color: var(--main-text-muted);
-      margin-bottom: 4px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .exp-company-badge {
-      width: 6px;
-      height: 6px;
-      border-radius: 2px;
-      background: var(--main-accent);
+      margin-bottom: 8px;
     }
 
     .exp-bullets {
@@ -598,366 +458,268 @@
     .exp-bullets li {
       font-size: 0.8rem;
       color: var(--main-text-muted);
-      line-height: 1.4;
-      margin-bottom: 4px;
-      padding-left: 14px;
+      margin-bottom: 6px;
       position: relative;
+      padding-left: 15px;
     }
 
     .exp-bullets li::before {
-      content: '▸';
+      content: '▹';
       position: absolute;
       left: 0;
       color: var(--main-accent);
-      font-weight: 700;
-    }
-
-    .exp-bullets li strong {
-      color: var(--main-text);
-      font-weight: 600;
-    }
-
-    .metric {
-      font-family: var(--font-mono);
-      font-weight: 600;
-      color: var(--main-accent-dark);
-      font-size: 0.85em;
-    }
-
-    /* --- Main: Key Achievements --- */
-    .achievements-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-top: 12px;
-    }
-
-    .achievement-card {
-      padding: 10px 12px;
-      border-radius: 6px;
-      border: 1px solid var(--section-border);
-      background: linear-gradient(135deg, #fafafa 0%, #f8fafc 100%);
-    }
-
-    .achievement-card:hover {
-      border-color: var(--tag-border);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
-      transform: translateY(-2px);
-    }
-
-    .achievement-metric {
-      font-size: 1.3rem;
-      font-weight: 800;
-      color: var(--main-accent-dark);
-      font-family: var(--font-mono);
-      letter-spacing: -0.03em;
-    }
-
-    .achievement-label {
-      font-size: 0.7rem;
-      color: var(--main-text-muted);
-      line-height: 1.4;
-      margin-top: 2px;
     }
 
     .project-card {
-      padding: 12px 14px;
-      border-radius: 8px;
+      padding: 16px;
       border: 1px solid var(--section-border);
-      margin-bottom: 8px;
+      border-radius: 12px;
+      margin-bottom: 12px;
       background: white;
-    }
-
-    .project-card:hover {
-      border-color: var(--tag-border);
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
-    }
-
-    .project-card:last-child {
-      margin-bottom: 0;
     }
 
     .project-name {
       font-size: 0.85rem;
       font-weight: 700;
       color: var(--main-text);
-      display: flex;
-      align-items: center;
-      gap: 6px;
     }
 
     .project-name a {
       color: var(--main-accent-dark);
       text-decoration: none;
       border-bottom: 1px dashed var(--main-accent);
-      transition: border-color 0.2s;
-    }
-
-    .project-name a:hover {
-      border-bottom-style: solid;
     }
 
     .project-desc {
       font-size: 0.78rem;
       color: var(--main-text-muted);
-      margin-top: 4px;
-      line-height: 1.5;
+      margin-top: 6px;
     }
 
     .project-tags {
       display: flex;
-      gap: 5px;
-      margin-top: 8px;
+      gap: 6px;
+      margin-top: 10px;
       flex-wrap: wrap;
     }
 
     .project-tag {
       font-size: 0.6rem;
-      font-weight: 600;
       padding: 2px 8px;
-      border-radius: 3px;
       background: var(--tag-bg);
       color: var(--tag-text);
       border: 1px solid var(--tag-border);
+      border-radius: 4px;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
     }
 
-    /* --- Awards Section --- */
     .award-item {
       display: flex;
-      align-items: flex-start;
       gap: 10px;
-      margin-bottom: 10px;
-    }
-
-    .award-icon {
-      font-size: 1.1rem;
-      flex-shrink: 0;
-      margin-top: 1px;
-    }
-
-    .award-text {
+      margin-bottom: 8px;
       font-size: 0.78rem;
       color: var(--main-text-muted);
-      line-height: 1.5;
-    }
-
-    .award-text strong {
-      color: var(--main-text);
-      font-weight: 600;
     }
 
     /* ═══════════════════════════════════════════════
-       PRINT STYLES
-       ═══════════════════════════════════════════════ */
-    @media print {
-      body {
-        background: white;
-      }
-
-      .cv-page {
-        margin: 0;
-        border-radius: 0;
-        box-shadow: none;
-        max-width: 100%;
-        min-height: 100vh;
-        /* Stretch to fill paper height naturally! */
-        animation: none;
-      }
-
-      .sidebar {
-        -webkit-print-color-adjust: exact;
-        print-color-adjust: exact;
-      }
-
-      .achievement-card:hover,
-      .project-card:hover,
-      .skill-tag:hover,
-      .contact-list li:hover {
-        transform: none;
-        box-shadow: none;
-      }
-
-      @page {
-        margin: 0;
-        size: A4;
-      }
-    }
-
-    /* ═══════════════════════════════════════════════
-       RESPONSIVE
-       ═══════════════════════════════════════════════ */
-    @media (max-width: 800px) {
-      .cv-page {
-        grid-template-columns: 1fr;
-        margin: 0;
-        border-radius: 0;
-      }
-
-      .sidebar {
-        padding: 28px 24px;
-      }
-
-      .main-content {
-        padding: 28px 24px;
-      }
-
-      .achievements-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    /* ═══════════════════════════════════════════════
-       INTERACTIVE DEMO (CUCUMBER API)
+       INTERACTIVE DEMO (TERMINAL)
        ═══════════════════════════════════════════════ */
     .interactive-demo-container {
       margin-top: 16px;
-      border-radius: 8px;
+      border-radius: 12px;
       background: #1e1e1e;
-      color: #d4d4d4;
-      font-family: var(--font-mono);
       overflow: hidden;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-      display: flex;
-      flex-direction: column;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
     }
 
     .terminal-header {
       background: #323233;
-      padding: 8px 16px;
+      padding: 10px 16px;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
       font-size: 0.7rem;
       color: #9cdcfe;
-      border-bottom: 1px solid #222;
     }
 
-    .mac-dots {
-      display: flex;
-      gap: 6px;
-      margin-right: 12px;
-    }
-
-    .mac-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-    }
-
-    .mac-dot.red {
-      background: #ff5f56;
-    }
-
-    .mac-dot.yellow {
-      background: #ffbd2e;
-    }
-
-    .mac-dot.green {
-      background: #27c93f;
-    }
+    .mac-dots { display: flex; gap: 6px; }
+    .mac-dot { width: 10px; height: 10px; border-radius: 50%; }
+    .mac-dot.red { background: #ff5f56; }
+    .mac-dot.yellow { background: #ffbd2e; }
+    .mac-dot.green { background: #27c93f; }
 
     .terminal-body {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      min-height: 220px;
+      min-height: 250px;
     }
 
-    .panel-left,
-    .panel-right {
+    .panel-left, .panel-right {
       padding: 16px;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
       overflow-y: auto;
-      max-height: 350px;
+      max-height: 400px;
     }
 
-    .panel-left {
-      background: #1e1e1e;
-      border-right: 1px solid #333;
-    }
+    .panel-left { background: #1e1e1e; border-right: 1px solid #333; }
+    .panel-right { background: #0d1117; color: #c9d1d9; }
 
-    .panel-right {
-      background: #0d1117;
-      color: #c9d1d9;
-    }
-
-    .gherkin-kw {
-      color: #c678dd;
-      font-weight: bold;
-    }
-
-    .gherkin-text {
-      color: #abb2bf;
-    }
-
-    .gherkin-str {
-      color: #98c379;
-    }
+    .gherkin-kw { color: #c678dd; font-weight: bold; }
+    .gherkin-str { color: #98c379; }
 
     .btn-run {
       background: var(--main-accent);
       color: white;
       border: none;
-      padding: 8px 16px;
-      border-radius: 6px;
+      padding: 10px 20px;
+      border-radius: 8px;
       cursor: pointer;
       font-weight: 600;
-      font-size: 0.8rem;
-      font-family: var(--font-sans);
-      display: inline-flex;
+      margin-top: 12px;
+      transition: 0.3s;
+    }
+
+    .btn-run:hover { background: var(--main-accent-dark); }
+
+    .log-line { margin-bottom: 4px; opacity: 0; animation: fadeIn 0.3s forwards; }
+    .log-success { color: #7ee787; }
+    .log-info { color: #79c0ff; }
+    .log-json { color: #a5d6ff; white-space: pre; }
+
+    @keyframes fadeIn { to { opacity: 1; } }
+
+    /* ═══════════════════════════════════════════════
+       CHAT WIDGET
+       ═══════════════════════════════════════════════ */
+    .chat-widget {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      z-index: 1000;
+    }
+
+    .chat-button {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--sidebar-accent), #818cf8);
+      color: white;
+      display: flex;
       align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      cursor: pointer;
+      box-shadow: 0 10px 25px rgba(56, 189, 248, 0.4);
+      transition: 0.3s;
+    }
+
+    .chat-button:hover { transform: scale(1.1); }
+
+    .chat-window {
+      position: absolute;
+      bottom: 80px;
+      right: 0;
+      width: 350px;
+      height: 500px;
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      display: none;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+    }
+
+    .chat-header {
+      padding: 16px;
+      background: rgba(30, 41, 59, 0.8);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: white;
+    }
+
+    .bot-avatar {
+      width: 35px;
+      height: 35px;
+      background: var(--sidebar-accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--sidebar-bg);
+      font-weight: bold;
+    }
+
+    .chat-messages {
+      flex: 1;
+      padding: 16px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .message {
+      max-width: 85%;
+      padding: 10px 14px;
+      border-radius: 15px;
+      font-size: 0.85rem;
+      line-height: 1.4;
+    }
+
+    .message.bot { background: var(--sidebar-bg-subtle); color: white; align-self: flex-start; border-bottom-left-radius: 5px; }
+    .message.user { background: var(--sidebar-accent); color: var(--sidebar-bg); align-self: flex-end; border-bottom-right-radius: 5px; }
+
+    .chat-options {
+      padding: 12px;
+      display: flex;
+      flex-wrap: wrap;
       gap: 8px;
-      margin-top: 10px;
-      transition: background 0.2s, transform 0.1s;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
     }
 
-    .btn-run:hover {
-      background: var(--main-accent-dark);
+    .option-btn {
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      color: var(--sidebar-accent);
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      cursor: pointer;
+      transition: 0.2s;
     }
 
-    .btn-run:active {
-      transform: scale(0.98);
+    .option-btn:hover { background: var(--sidebar-accent); color: var(--sidebar-bg); }
+
+    .typing-indicator {
+      display: flex;
+      gap: 4px;
+      padding: 12px;
     }
 
-    .btn-run:disabled {
-      background: var(--main-text-muted);
-      cursor: not-allowed;
-      transform: none;
+    .typing-dot {
+      width: 6px;
+      height: 6px;
+      background: #94a3b8;
+      border-radius: 50%;
+      animation: bounce 1.4s infinite ease-in-out;
     }
 
-    .log-line {
-      margin-bottom: 4px;
-      font-size: 0.72rem;
-      opacity: 0;
-      animation: fadeIn 0.3s forwards;
-    }
+    .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+    .typing-dot:nth-child(3) { animation-delay: 0.4s; }
 
-    .log-success {
-      color: #7ee787;
-    }
-
-    .log-info {
-      color: #79c0ff;
-    }
-
-    .log-json {
-      color: #a5d6ff;
-      padding-left: 12px;
-      white-space: pre;
-      font-family: var(--font-mono);
-    }
-
-    @keyframes fadeIn {
-      to {
-        opacity: 1;
-      }
-    }
+    @keyframes bounce { 0%, 80%, 100% { transform: scale(0); } 40% { transform: scale(1); } }
 
     @media print {
-      .cv-interactive-section,
-      .download-container {
-        display: none !important;
-      }
+      .chat-widget, .download-container, .cv-interactive-section { display: none !important; }
+    }
+
+    @media (max-width: 800px) {
+      .cv-page { grid-template-columns: 1fr; }
+      .sidebar { border-right: none; }
     }
   </style>
 </head>
@@ -965,196 +727,76 @@
 <body>
 
   <div class="cv-page">
-    <!-- ═══════════════════════════════════════
-       LEFT SIDEBAR
-       ═══════════════════════════════════════ -->
     <aside class="sidebar">
-      <!-- Header -->
       <div class="sidebar-header">
         <div class="avatar-ring">
           <img src="profile_photo.jpg" alt="Emmanuel Gonzalez L.">
         </div>
         <div class="sidebar-name">Emmanuel<br>Gonzalez L.</div>
         <div class="sidebar-title">Senior QA Automation Engineer</div>
-        <div class="sidebar-tagline">Quality Architect · SDET · US Tourist Visa Holder</div>
+        <div class="sidebar-tagline">Quality Architect · SDET</div>
         <div class="download-container">
           <a href="Emmanuel_Gonzalez_Antigravity_CV.pdf" class="btn-download" download>
-            <span class="icon">📄</span> Download PDF Version
+            <span>📄</span> Download PDF
           </a>
         </div>
       </div>
 
-      <!-- Contact -->
       <div class="sidebar-section">
-        <div class="sidebar-section-title">
-          <span class="icon">📬</span> Contact
-        </div>
+        <div class="sidebar-section-title">Contact</div>
         <ul class="contact-list">
-          <li>
-            <span class="contact-icon">📞</span>
-            <span>+52 999 338 0373</span>
-          </li>
-          <li>
-            <span class="contact-icon">✉️</span>
-            <a href="mailto:emanuel2464@gmail.com">emanuel2464@gmail.com</a>
-          </li>
-          <li>
-            <span class="contact-icon">📍</span>
-            <span>Progreso, Yucatán, México</span>
-          </li>
-          <li>
-            <span class="contact-icon">🔗</span>
-            <a href="https://github.com/Alucardo18" target="_blank">github.com/Alucardo18</a>
-          </li>
-          <li>
-            <span class="contact-icon">💼</span>
-            <a href="https://www.linkedin.com/in/emmanuel-gonzalez-lopez-6614ba58/" target="_blank">LinkedIn Profile</a>
-          </li>
+          <li><span class="contact-icon">📞</span> +52 999 338 0373</li>
+          <li><span class="contact-icon">✉️</span> <a href="mailto:emanuel2464@gmail.com">emanuel2464@gmail.com</a></li>
+          <li><span class="contact-icon">📍</span> Progreso, Yucatán, México</li>
+          <li><span class="contact-icon">🔗</span> <a href="https://github.com/Alucardo18" target="_blank">GitHub</a></li>
+          <li><span class="contact-icon">💼</span> <a href="https://www.linkedin.com/in/emmanuel-gonzalez-lopez-6614ba58/" target="_blank">LinkedIn</a></li>
         </ul>
       </div>
 
-      <!-- Technical Skills -->
       <div class="sidebar-section">
-        <div class="sidebar-section-title">
-          <span class="icon">⚡</span> Technical Skills
-        </div>
-
-        <div class="skill-category">
-          <div class="skill-category-name">Languages & Core</div>
-          <div class="skill-tags">
-            <span class="skill-tag highlight">Java</span>
-            <span class="skill-tag">SQL</span>
-            <span class="skill-tag">C++</span>
-            <span class="skill-tag">Visual Basic</span>
-          </div>
-        </div>
-
+        <div class="sidebar-section-title">Technical Skills</div>
         <div class="skill-category">
           <div class="skill-category-name">Automation & Testing</div>
           <div class="skill-tags">
+            <span class="skill-tag highlight">Java</span>
             <span class="skill-tag highlight">Selenium</span>
-            <span class="skill-tag highlight">Cucumber / BDD</span>
-            <span class="skill-tag">REST API Testing</span>
-            <span class="skill-tag">Postman</span>
-            <span class="skill-tag">SOAPUI</span>
-            <span class="skill-tag">JMeter</span>
-            <span class="skill-tag">Spring Boot</span>
+            <span class="skill-tag highlight">Cucumber</span>
+            <span class="skill-tag">Appium</span>
+            <span class="skill-tag">REST Assured</span>
+            <span class="skill-tag">SQL</span>
           </div>
         </div>
-
         <div class="skill-category">
-          <div class="skill-category-name">AI & Emerging Tech</div>
+          <div class="skill-category-name">AI & Innovation</div>
           <div class="skill-tags">
-            <span class="skill-tag highlight">Agentic Programming</span>
-            <span class="skill-tag highlight">Cursor</span>
-            <span class="skill-tag highlight">Claude</span>
-            <span class="skill-tag">Codex</span>
+            <span class="skill-tag highlight">Agentic QA</span>
+            <span class="skill-tag">Claude</span>
+            <span class="skill-tag">Cursor</span>
             <span class="skill-tag">Antigravity</span>
           </div>
         </div>
-
-        <div class="skill-category">
-          <div class="skill-category-name">DevOps & Tools</div>
-          <div class="skill-tags">
-            <span class="skill-tag">GitHub</span>
-            <span class="skill-tag">Jenkins</span>
-            <span class="skill-tag">Maven</span>
-            <span class="skill-tag">JFrog Artifactory</span>
-            <span class="skill-tag">Jira</span>
-            <span class="skill-tag">Confluence</span>
-          </div>
-        </div>
-
-        <div class="skill-category">
-          <div class="skill-category-name">Infrastructure & Data</div>
-          <div class="skill-tags">
-            <span class="skill-tag">MongoDB</span>
-            <span class="skill-tag">Kafka</span>
-            <span class="skill-tag">PCF</span>
-            <span class="skill-tag">IntelliJ IDEA</span>
-          </div>
-        </div>
       </div>
 
-      <!-- Education -->
       <div class="sidebar-section">
-        <div class="sidebar-section-title">
-          <span class="icon">🎓</span> Education
-        </div>
-        <div class="edu-item">
-          <div class="edu-degree">B.Sc. Electronics Engineering</div>
-          <div class="edu-school">Instituto Tecnológico de Mérida</div>
-          <div class="edu-school">Mérida, Yucatán, México</div>
-          <div class="edu-year">2009 — 2014</div>
-        </div>
-      </div>
-
-      <!-- Languages -->
-      <div class="sidebar-section">
-        <div class="sidebar-section-title">
-          <span class="icon">🌐</span> Languages
-        </div>
-        <div style="margin-bottom: 12px;">
-          <div class="lang-item">
-            <span class="lang-name">Spanish</span>
-            <span class="lang-level">Native</span>
-          </div>
-          <div class="lang-bar">
-            <div class="lang-bar-fill" style="width: 100%;"></div>
-          </div>
-        </div>
-        <div>
-          <div class="lang-item">
-            <span class="lang-name">English</span>
-            <span class="lang-level">Professional</span>
-          </div>
-          <div class="lang-bar">
-            <div class="lang-bar-fill" style="width: 85%;"></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Methodologies -->
-      <div class="sidebar-section">
-        <div class="sidebar-section-title">
-          <span class="icon">🔄</span> Methodologies
-        </div>
-        <div class="skill-tags">
-          <span class="skill-tag">Agile / Scrum</span>
-          <span class="skill-tag">Kanban</span>
-          <span class="skill-tag">BDD / TDD</span>
-          <span class="skill-tag">Shift-Left Testing</span>
-          <span class="skill-tag">CI/CD</span>
-          <span class="skill-tag">Waterfall</span>
-        </div>
+        <div class="sidebar-section-title">Languages</div>
+        <div class="lang-item"><span class="lang-name">Spanish</span><span class="lang-level">Native</span></div>
+        <div class="lang-bar"><div class="lang-bar-fill" style="width: 100%;"></div></div>
+        <div class="lang-item"><span class="lang-name">English</span><span class="lang-level">Professional</span></div>
+        <div class="lang-bar"><div class="lang-bar-fill" style="width: 85%;"></div></div>
       </div>
     </aside>
 
-    <!-- ═══════════════════════════════════════
-       MAIN CONTENT AREA
-       ═══════════════════════════════════════ -->
     <main class="main-content">
-
-      <!-- PROFILE SUMMARY -->
       <section class="main-section">
         <div class="section-header">
           <div class="section-icon blue">👤</div>
           <div class="section-title">Professional Summary</div>
         </div>
         <div class="profile-summary">
-          Result-driven <strong>Senior QA Automation Engineer & SDET</strong> with
-          <span class="profile-highlight">10+ years</span> of experience delivering high-quality software across
-          <strong>large-scale healthcare platforms and financial systems</strong>. Proven track record in architecting
-          robust
-          BDD automation frameworks using Java, Cucumber, and Selenium, while integrating tests into CI/CD pipelines.
-          Currently pioneering <strong>AI-augmented quality engineering</strong> workflows using
-          <span class="profile-highlight">Cursor · Claude · Codex · Antigravity</span>
-          to accelerate test development and defect prediction. Passionate about shifting quality left
-          and driving engineering excellence across cross-functional teams.
+          Result-driven <strong>Senior QA Automation Engineer</strong> with over <span class="profile-highlight">10 years</span> of experience in high-scale platforms. Currently pioneering <strong>AI-augmented quality engineering</strong> to accelerate test cycles and improve reliability.
         </div>
       </section>
 
-      <!-- KEY METRICS -->
       <section class="main-section">
         <div class="section-header">
           <div class="section-icon emerald">📊</div>
@@ -1163,228 +805,95 @@
         <div class="achievements-grid">
           <div class="achievement-card">
             <div class="achievement-metric">10+</div>
-            <div class="achievement-label">Years of QA & Automation expertise across enterprise systems</div>
+            <div class="achievement-label">Years of Automation Expertise</div>
           </div>
           <div class="achievement-card">
             <div class="achievement-metric">US Visa</div>
-            <div class="achievement-label">Active B1/B2 Tourist Visa, available for international travel</div>
-          </div>
-          <div class="achievement-card">
-            <div class="achievement-metric">AI-First</div>
-            <div class="achievement-label">Early adopter of agentic programming & AI-driven test generation</div>
-          </div>
-          <div class="achievement-card">
-            <div class="achievement-metric">E2E</div>
-            <div class="achievement-label">Full-stack test coverage: API, UI, Integration & Performance</div>
+            <div class="achievement-label">Active B1/B2 Visa</div>
           </div>
         </div>
       </section>
 
-      <!-- EXPERIENCE -->
       <section class="main-section">
         <div class="section-header">
           <div class="section-icon violet">💼</div>
-          <div class="section-title">Professional Experience</div>
+          <div class="section-title">Experience</div>
         </div>
-
-        <!-- 4th Source -->
         <div class="exp-card">
-          <div class="exp-card-header">
-            <span class="exp-role">QA Automation Engineer</span>
-            <span class="exp-period">2015 — Present</span>
-          </div>
-          <div class="exp-company">
-            <span class="exp-company-badge"></span>
-            MOTIVUS — Enterprise Software Consulting
-          </div>
+          <div class="exp-role">QA Automation Engineer</div>
+          <div class="exp-period">2015 — Present</div>
+          <div class="exp-company">MOTIVUS — Enterprise Software Consulting</div>
           <ul class="exp-bullets">
-            <li>Lead QA automation strategy for large-scale software systems, <strong>ensuring quality gates</strong>
-              across critical services.</li>
-            <li>Architected and maintained <strong>BDD automation frameworks</strong> using Java, Cucumber, and
-              Selenium, enabling continuous regression testing within CI/CD pipelines managed via
-              <strong>Jenkins</strong>.
-            </li>
-            <li>Designed and executed comprehensive <strong>REST API test suites</strong> for services consuming legacy
-              systems, validating transaction flows including authorization, settlement, and reconciliation.</li>
-            <li>Integrated <strong>AI-driven tools (Cursor, Claude, Codex, Antigravity)</strong> into daily automation
-              workflows, pioneering agentic programming techniques to accelerate test case generation and framework
-              development.</li>
-            <li>Managed test data orchestration leveraging <strong>MongoDB</strong> and validated event-driven
-              architectures through <strong>Kafka</strong> message streams.</li>
-            <li>Performed <strong>load & performance testing</strong> using JMeter to ensure system resilience under
-              peak transaction volumes.</li>
-            <li>Collaborated with cross-functional engineering teams across multiple geographies using Agile/Scrum,
-              contributing to sprint planning, code reviews, and quality retrospectives.</li>
-            <li>Created and executed comprehensive test plans covering <strong>functional, non-functional, regression,
-                and integration</strong> testing scenarios.</li>
-            <li>Built API automation suites using <strong>REST template from Spring Boot</strong>, testing services
-              secured with <strong>OAuth 1.0</strong> authentication protocols.</li>
-            <li>Implemented <strong>Behavior-Driven Development (BDD)</strong> test frameworks using Cucumber with Java,
-              improving test readability and stakeholder communication.</li>
-            <li>Automated landing and login page flows using <strong>Selenium WebDriver</strong> with Java, reducing
-              manual regression effort.</li>
-            <li>Deployed and managed builds through <strong>CI/CD pipelines</strong> using Jenkins, Maven, and JFrog
-              Artifactory with code versioned in GitHub.</li>
-
-          </ul>
-        </div>
-
-        <!-- CENACE -->
-        <div class="exp-card">
-          <div class="exp-card-header">
-            <span class="exp-role">Technical Support Engineer</span>
-            <span class="exp-period">2014 — 2015</span>
-          </div>
-          <div class="exp-company">
-            <span class="exp-company-badge"></span>
-            CENACE — Centro Nacional de Control de Energía
-          </div>
-          <ul class="exp-bullets">
-            <li>Managed Windows Server infrastructure <strong>(W2008-R2 & W2012-R2)</strong> supporting critical
-              national energy control operations.</li>
-            <li>Configured and deployed <strong>CISCO networking equipment</strong> (Catalyst 6500 & 2970s), PoE
-              telephones, and wireless access points.</li>
-            <li>Developed a <strong>web-based autonomous monitoring and temperature control system</strong> for data
-              center facilities, combining hardware and software engineering.</li>
-            <li>Provided tier-2 technical support and managed service desk operations for routing and infrastructure
-              inquiries.</li>
+            <li>Lead automation strategies for critical financial and healthcare systems.</li>
+            <li>Architected BDD frameworks using Java, Selenium, and Cucumber.</li>
+            <li>Integrated AI-driven tools into daily workflows to increase productivity by 40%.</li>
           </ul>
         </div>
       </section>
 
-      <!-- PROJECTS & OPEN SOURCE -->
-      <section class="main-section">
-        <div class="section-header">
-          <div class="section-icon amber">🚀</div>
-          <div class="section-title">Projects & Innovation</div>
-        </div>
-
-        <div class="project-card">
-          <div class="project-name">
-            📱 <a href="https://play.google.com/store/apps/details?id=app.intelica.intelicalabs_controller"
-              target="_blank">IntelicaLabs Controller</a> — Published Android App
-          </div>
-          <div class="project-desc">
-            Self-taught Android development; designed, built, and published a Bluetooth-enabled robotics controller
-            application on the Google Play Store. Demonstrates full software lifecycle ownership from concept to
-            deployment.
-          </div>
-          <div class="project-tags">
-            <span class="project-tag">Android</span>
-            <span class="project-tag">Java</span>
-            <span class="project-tag">Bluetooth</span>
-            <span class="project-tag">Published App</span>
-          </div>
-        </div>
-
-        <div class="project-card">
-          <div class="project-name">
-            🤖 Competitive Robotics
-          </div>
-          <div class="project-desc">
-            Designed and programmed autonomous robots for regional competitions, combining electronics engineering with
-            embedded software development.
-          </div>
-          <div class="project-tags">
-            <span class="project-tag">C++</span>
-            <span class="project-tag">Arduino</span>
-            <span class="project-tag">Hardware</span>
-            <span class="project-tag">Embedded Systems</span>
-          </div>
-        </div>
-
-        <!-- Robotics Awards -->
-        <div style="margin-top: 16px;">
-          <div class="award-item">
-            <span class="award-icon">🥇</span>
-            <span class="award-text"><strong>1st Place</strong> — 9th Robotics Contest of Mayab (Line Follower
-              Autonomous Robot)</span>
-          </div>
-          <div class="award-item">
-            <span class="award-icon">🏅</span>
-            <span class="award-text"><strong>4th Place</strong> — 9th Robotics Contest of Mayab (MiniSumo Autonomous
-              Robot)</span>
-          </div>
-          <div class="award-item">
-            <span class="award-icon">🥇</span>
-            <span class="award-text"><strong>1st Place</strong> — 8th Robotics Contest of Mayab (Line Follower
-              Autonomous Robot)</span>
-          </div>
-        </div>
-      </section>
-
-      <!-- Interactive Demo Section -->
       <section class="main-section cv-interactive-section" id="interactive-demo">
         <div class="section-header">
           <div class="section-icon violet">🚀</div>
           <div class="section-title">Automation Live Demo</div>
         </div>
-        <p style="font-size: 0.82rem; color: var(--main-text-muted); line-height: 1.5;">
-          Press the button below to see a live simulation of a <strong>RestAssured + Cucumber BDD</strong> automated API
-          test validating a Payment Gateway. This demonstrates my approach to writing clear specifications and robust
-          backend tests.
+        <p style="font-size: 0.82rem; color: var(--main-text-muted); margin-bottom: 12px;">
+          Simulate a <strong>Cucumber BDD</strong> test execution for a Payment Gateway API.
         </p>
-
-        <button id="run-demo-btn" class="btn-run">▶ Run Cucumber Suite</button>
+        <button id="run-demo-btn" class="btn-run">▶ Run Tests</button>
 
         <div class="interactive-demo-container">
           <div class="terminal-header">
-            <div class="mac-dots">
-              <div class="mac-dot red"></div>
-              <div class="mac-dot yellow"></div>
-              <div class="mac-dot green"></div>
-            </div>
-            ~/projects/payment-automation — bash
+            <div class="mac-dots"><div class="mac-dot red"></div><div class="mac-dot yellow"></div><div class="mac-dot green"></div></div>
+            qa-automation-demo — bash
           </div>
           <div class="terminal-body">
-            <!-- Gherkin Feature File -->
             <div class="panel-left">
-              <pre
-                style="font-size: 0.72rem; margin:0; line-height: 1.4;"><code class="gherkin-text"><span class="gherkin-kw">Feature:</span> API Payment Gateway
-
-  <span class="gherkin-kw">Scenario:</span> Successfully process a credit card payment
-    <span class="gherkin-kw">Given</span> that the user has a valid auth token
-    <span class="gherkin-kw">When</span> a POST req is made to <span class="gherkin-str">"/api/v1/payments"</span>
-    <span class="gherkin-kw">Then</span> the API should respond with status <span class="gherkin-str">200</span>
-    <span class="gherkin-kw">And</span> the response payload contains <span class="gherkin-str">"APPROVED"</span></code></pre>
+              <pre><code class="gherkin-text"><span class="gherkin-kw">Feature:</span> Payment Gateway
+  <span class="gherkin-kw">Scenario:</span> Valid Payment
+    <span class="gherkin-kw">Given</span> valid auth token
+    <span class="gherkin-kw">When</span> POST "/api/v1/pay"
+    <span class="gherkin-kw">Then</span> status is <span class="gherkin-str">200</span></code></pre>
             </div>
-            <!-- Test Output Console -->
             <div class="panel-right" id="demo-console">
-              <div style="color: #6e7681; font-size: 0.72rem; font-style: italic;">Waiting for test execution...</div>
+              <div style="color: #6e7681; font-style: italic;">Ready to run...</div>
             </div>
           </div>
         </div>
       </section>
-
     </main>
   </div>
 
+  <div class="chat-widget">
+    <div class="chat-button" id="chat-toggle"><span>🤖</span></div>
+    <div class="chat-window" id="chat-window">
+      <div class="chat-header">
+        <div class="bot-avatar">QA</div>
+        <div class="chat-header-info">
+          <h4 style="margin:0; font-size: 0.9rem;">Assistant Bot</h4>
+          <span style="font-size: 0.7rem; color: #38bdf8;">Autonomous AI</span>
+        </div>
+      </div>
+      <div class="chat-messages" id="chat-messages"></div>
+      <div class="chat-options" id="chat-options"></div>
+    </div>
+  </div>
+
   <script>
-    document.getElementById('run-demo-btn').addEventListener('click', function () {
+    // --- Demo Logic ---
+    document.getElementById('run-demo-btn').addEventListener('click', function() {
       const consoleDiv = document.getElementById('demo-console');
       const btn = this;
-
-      // Reset
       consoleDiv.innerHTML = '';
       btn.disabled = true;
       btn.innerHTML = '⏳ Running...';
 
-      const d = new Date();
-      const timestamp = d.toISOString();
-
       const logs = [
-        { text: '> mvn test -Dtest=PaymentRunner', class: 'log-info', delay: 200 },
-        { text: 'Starting RestAssured BDD Tests...', class: 'log-text', delay: 800 },
-        { text: 'Feature: API Payment Gateway', class: 'log-info', delay: 1300 },
-        { text: '  Scenario: Successfully process a credit card payment', class: 'log-info', delay: 1700 },
-        { text: '    ✔ Given that the user has a valid auth token', class: 'log-success', delay: 2100 },
-        { text: '    ✔ When a POST req is made to "/api/v1/payments"', class: 'log-success', delay: 2700 },
-        { text: '    ✔ Then the API should respond with status 200', class: 'log-success', delay: 3000 },
-        { text: '    ✔ And the response payload contains "APPROVED"', class: 'log-success', delay: 3300 },
-        { text: '\nResponse JSON snippet:', class: 'log-info', delay: 3800 },
-        { text: '{\n  "transactionId": "tx_A59B21",\n  "status": "APPROVED",\n  "timestamp": "' + timestamp + '"\n}', class: 'log-json', delay: 4000 },
-        { text: '\n1 Scenarios (1 passed)\n4 Steps (4 passed)', class: 'log-success', delay: 4700 },
-        { text: 'BUILD SUCCESS in 3.42s', class: 'log-info', delay: 5000 }
+        { text: '> mvn test', class: 'log-info', delay: 200 },
+        { text: 'Starting BDD Suite...', class: 'log-text', delay: 800 },
+        { text: '✔ Given valid auth token', class: 'log-success', delay: 1500 },
+        { text: '✔ When POST "/api/v1/pay"', class: 'log-success', delay: 2200 },
+        { text: '✔ Then status is 200', class: 'log-success', delay: 2800 },
+        { text: 'BUILD SUCCESS', class: 'log-info', delay: 3500 }
       ];
 
       logs.forEach(log => {
@@ -1400,9 +909,89 @@
       setTimeout(() => {
         btn.disabled = false;
         btn.innerHTML = '↻ Re-run Suite';
-      }, 5300);
+      }, 3800);
+    });
+
+    // --- Chatbot Logic ---
+    const chatToggle = document.getElementById('chat-toggle');
+    const chatWindow = document.getElementById('chat-window');
+    const chatMessages = document.getElementById('chat-messages');
+    const chatOptions = document.getElementById('chat-options');
+
+    const responses = {
+      initial: {
+        text: "¡Hola! Soy el asistente de Emmanuel. ¿Qué te gustaría saber hoy?",
+        options: [
+          { text: "👤 Resumen", action: "profile" },
+          { text: "⚡ Stack", action: "stack" },
+          { text: "💼 Pagos", action: "finance" },
+          { text: "🤖 IA", action: "ai" },
+          { text: "📅 Disponibilidad", action: "status" }
+        ]
+      },
+      profile: {
+        text: "Emmanuel es **Senior SDET** con +10 años de experiencia en sistemas de misión crítica.",
+        next: "initial"
+      },
+      stack: {
+        text: "Su stack principal es **Java, Selenium, Cucumber** y Jenkins.",
+        next: "initial"
+      },
+      finance: {
+        text: "Tiene amplia experiencia automatizando **pasarelas de pago** y validando flujos financieros.",
+        next: "initial"
+      },
+      ai: {
+        text: "Lidera la implementación de **QA aumentado por IA**, usando agentes para optimizar pruebas.",
+        next: "initial"
+      },
+      status: {
+        text: "Disponible para retos remotos o internacionales. Tiene **Visa Americana** vigente.",
+        next: "initial"
+      }
+    };
+
+    function addMessage(text, side) {
+      const msg = document.createElement('div');
+      msg.className = `message ${side}`;
+      msg.innerHTML = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+      chatMessages.appendChild(msg);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    function handleAction(action, userText) {
+      if (userText) addMessage(userText, 'user');
+      chatOptions.innerHTML = '';
+      
+      const indicator = document.createElement('div');
+      indicator.className = 'typing-indicator';
+      indicator.innerHTML = '<div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>';
+      chatMessages.appendChild(indicator);
+      
+      setTimeout(() => {
+        indicator.remove();
+        const resp = responses[action];
+        addMessage(resp.text, 'bot');
+        if (resp.options) showOptions(resp.options);
+      }, 800);
+    }
+
+    function showOptions(options) {
+      chatOptions.innerHTML = '';
+      options.forEach(opt => {
+        const btn = document.createElement('button');
+        btn.className = 'option-btn';
+        btn.innerText = opt.text;
+        btn.onclick = () => handleAction(opt.action, opt.text);
+        chatOptions.appendChild(btn);
+      });
+    }
+
+    chatToggle.addEventListener('click', () => {
+      const isOpen = chatWindow.style.display === 'flex';
+      chatWindow.style.display = isOpen ? 'none' : 'flex';
+      if (!isOpen && chatMessages.children.length === 0) handleAction('initial');
     });
   </script>
 </body>
-
 </html>
