@@ -109,6 +109,7 @@
       display: flex;
       flex-direction: column;
       border-right: 1px solid rgba(255, 255, 255, 0.05);
+      position: relative;
     }
 
     /* --- Sidebar: Name & Title --- */
@@ -207,6 +208,7 @@
     .contact-list .contact-icon {
       color: var(--sidebar-accent);
       width: 16px;
+      text-align: center;
     }
 
     /* --- Sidebar: Skills --- */
@@ -319,6 +321,23 @@
       letter-spacing: 0.1em;
       transition: all 0.3s;
       box-shadow: 0 8px 20px -6px rgba(56, 189, 248, 0.5);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-download::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: 0.6s;
+    }
+
+    .btn-download:hover::before {
+      left: 100%;
     }
 
     .btn-download:hover {
@@ -353,6 +372,7 @@
       align-items: center;
       justify-content: center;
       font-size: 1rem;
+      flex-shrink: 0;
     }
 
     .section-icon.blue { background: #eff6ff; color: #2563eb; }
@@ -398,6 +418,12 @@
       border: 1px solid var(--section-border);
       border-radius: 12px;
       background: #fcfcfc;
+      transition: all 0.3s;
+    }
+
+    .achievement-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
     }
 
     .achievement-metric {
@@ -476,6 +502,11 @@
       border-radius: 12px;
       margin-bottom: 12px;
       background: white;
+      transition: all 0.3s;
+    }
+
+    .project-card:hover {
+      box-shadow: 0 4px 16px rgba(0,0,0,0.05);
     }
 
     .project-name {
@@ -718,7 +749,7 @@
     }
 
     @media (max-width: 800px) {
-      .cv-page { grid-template-columns: 1fr; }
+      .cv-page { grid-template-columns: 1fr; margin: 0; border-radius: 0; }
       .sidebar { border-right: none; }
     }
   </style>
@@ -727,6 +758,9 @@
 <body>
 
   <div class="cv-page">
+    <!-- ═══════════════════════════════════════
+       LEFT SIDEBAR
+       ═══════════════════════════════════════ -->
     <aside class="sidebar">
       <div class="sidebar-header">
         <div class="avatar-ring">
@@ -734,27 +768,29 @@
         </div>
         <div class="sidebar-name">Emmanuel<br>Gonzalez L.</div>
         <div class="sidebar-title">Senior QA Automation Engineer</div>
-        <div class="sidebar-tagline">Quality Architect · SDET</div>
+        <div class="sidebar-tagline">Quality Architect · SDET · US Tourist Visa Holder</div>
         <div class="download-container">
           <a href="Emmanuel_Gonzalez_Antigravity_CV.pdf" class="btn-download" download>
-            <span>📄</span> Download PDF
+            <span>📄</span> Download PDF Version
           </a>
         </div>
       </div>
 
+      <!-- Contact -->
       <div class="sidebar-section">
-        <div class="sidebar-section-title">Contact</div>
+        <div class="sidebar-section-title">📬 Contact</div>
         <ul class="contact-list">
           <li><span class="contact-icon">📞</span> +52 999 338 0373</li>
           <li><span class="contact-icon">✉️</span> <a href="mailto:emanuel2464@gmail.com">emanuel2464@gmail.com</a></li>
           <li><span class="contact-icon">📍</span> Progreso, Yucatán, México</li>
-          <li><span class="contact-icon">🔗</span> <a href="https://github.com/Alucardo18" target="_blank">GitHub</a></li>
-          <li><span class="contact-icon">💼</span> <a href="https://www.linkedin.com/in/emmanuel-gonzalez-lopez-6614ba58/" target="_blank">LinkedIn</a></li>
+          <li><span class="contact-icon">🔗</span> <a href="https://github.com/Alucardo18" target="_blank">github.com/Alucardo18</a></li>
+          <li><span class="contact-icon">💼</span> <a href="https://www.linkedin.com/in/emmanuel-gonzalez-lopez-6614ba58/" target="_blank">LinkedIn Profile</a></li>
         </ul>
       </div>
 
+      <!-- Technical Skills -->
       <div class="sidebar-section">
-        <div class="sidebar-section-title">Technical Skills</div>
+        <div class="sidebar-section-title">⚡ Technical Skills</div>
         <div class="skill-category">
           <div class="skill-category-name">Automation & Testing</div>
           <div class="skill-tags">
@@ -763,7 +799,16 @@
             <span class="skill-tag highlight">Cucumber</span>
             <span class="skill-tag">Appium</span>
             <span class="skill-tag">REST Assured</span>
+            <span class="skill-tag">Postman</span>
+            <span class="skill-tag">JMeter</span>
+          </div>
+        </div>
+        <div class="skill-category">
+          <div class="skill-category-name">Languages & Core</div>
+          <div class="skill-tags">
+            <span class="skill-tag highlight">Java</span>
             <span class="skill-tag">SQL</span>
+            <span class="skill-tag">C++</span>
           </div>
         </div>
         <div class="skill-category">
@@ -777,26 +822,57 @@
         </div>
       </div>
 
+      <!-- Education -->
       <div class="sidebar-section">
-        <div class="sidebar-section-title">Languages</div>
+        <div class="sidebar-section-title">🎓 Education</div>
+        <div class="edu-item">
+          <div class="edu-degree">B.Sc. Electronics Engineering</div>
+          <div class="edu-school">Instituto Tecnológico de Mérida</div>
+          <div class="edu-year">2009 — 2014</div>
+        </div>
+      </div>
+
+      <!-- Languages -->
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">🌐 Languages</div>
         <div class="lang-item"><span class="lang-name">Spanish</span><span class="lang-level">Native</span></div>
         <div class="lang-bar"><div class="lang-bar-fill" style="width: 100%;"></div></div>
         <div class="lang-item"><span class="lang-name">English</span><span class="lang-level">Professional</span></div>
         <div class="lang-bar"><div class="lang-bar-fill" style="width: 85%;"></div></div>
       </div>
+
+      <!-- Methodologies -->
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">🔄 Methodologies</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Agile / Scrum</span>
+          <span class="skill-tag">Kanban</span>
+          <span class="skill-tag">BDD / TDD</span>
+          <span class="skill-tag">CI/CD</span>
+        </div>
+      </div>
     </aside>
 
+    <!-- ═══════════════════════════════════════
+       MAIN CONTENT AREA
+       ═══════════════════════════════════════ -->
     <main class="main-content">
+      <!-- SUMMARY -->
       <section class="main-section">
         <div class="section-header">
           <div class="section-icon blue">👤</div>
           <div class="section-title">Professional Summary</div>
         </div>
         <div class="profile-summary">
-          Result-driven <strong>Senior QA Automation Engineer</strong> with over <span class="profile-highlight">10 years</span> of experience in high-scale platforms. Currently pioneering <strong>AI-augmented quality engineering</strong> to accelerate test cycles and improve reliability.
+          Result-driven <strong>Senior QA Automation Engineer & SDET</strong> with over
+          <span class="profile-highlight">10 years</span> of experience delivering high-quality software across
+          <strong>large-scale healthcare platforms and financial systems</strong>. Proven track record in architecting
+          robust BDD automation frameworks using Java, Cucumber, and Selenium. Currently pioneering
+          <strong>AI-augmented quality engineering</strong> to accelerate test development and defect prediction.
         </div>
       </section>
 
+      <!-- METRICS -->
       <section class="main-section">
         <div class="section-header">
           <div class="section-icon emerald">📊</div>
@@ -805,57 +881,107 @@
         <div class="achievements-grid">
           <div class="achievement-card">
             <div class="achievement-metric">10+</div>
-            <div class="achievement-label">Years of Automation Expertise</div>
+            <div class="achievement-label">Years of QA & Automation expertise</div>
           </div>
           <div class="achievement-card">
             <div class="achievement-metric">US Visa</div>
-            <div class="achievement-label">Active B1/B2 Visa</div>
+            <div class="achievement-label">Active B1/B2 Tourist Visa</div>
+          </div>
+          <div class="achievement-card">
+            <div class="achievement-metric">AI-First</div>
+            <div class="achievement-label">Early adopter of agentic programming</div>
+          </div>
+          <div class="achievement-card">
+            <div class="achievement-metric">E2E</div>
+            <div class="achievement-label">Full-stack test coverage (API & UI)</div>
           </div>
         </div>
       </section>
 
+      <!-- EXPERIENCE -->
       <section class="main-section">
         <div class="section-header">
           <div class="section-icon violet">💼</div>
-          <div class="section-title">Experience</div>
+          <div class="section-title">Professional Experience</div>
         </div>
+
         <div class="exp-card">
           <div class="exp-role">QA Automation Engineer</div>
           <div class="exp-period">2015 — Present</div>
           <div class="exp-company">MOTIVUS — Enterprise Software Consulting</div>
           <ul class="exp-bullets">
-            <li>Lead automation strategies for critical financial and healthcare systems.</li>
-            <li>Architected BDD frameworks using Java, Selenium, and Cucumber.</li>
-            <li>Integrated AI-driven tools into daily workflows to increase productivity by 40%.</li>
+            <li>Architected and maintained <strong>BDD automation frameworks</strong> using Java, Cucumber, and Selenium.</li>
+            <li>Designed and executed <strong>REST API test suites</strong> for complex financial transaction flows.</li>
+            <li>Integrated <strong>AI-driven tools (Cursor, Claude, Antigravity)</strong> into daily workflows, increasing test coverage efficiency.</li>
+            <li>Deployed builds through <strong>CI/CD pipelines</strong> using Jenkins and Maven.</li>
+          </ul>
+        </div>
+
+        <div class="exp-card">
+          <div class="exp-role">Technical Support Engineer</div>
+          <div class="exp-period">2014 — 2015</div>
+          <div class="exp-company">CENACE — Centro Nacional de Control de Energía</div>
+          <ul class="exp-bullets">
+            <li>Managed Windows Server infrastructure and critical national energy control networking equipment.</li>
+            <li>Developed a <strong>web-based monitoring system</strong> for data center temperature control.</li>
           </ul>
         </div>
       </section>
 
+      <!-- PROJECTS -->
+      <section class="main-section">
+        <div class="section-header">
+          <div class="section-icon amber">🚀</div>
+          <div class="section-title">Projects & Innovation</div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-name">📱 <a href="https://play.google.com/store/apps/details?id=app.intelica.intelicalabs_controller" target="_blank">IntelicaLabs Controller</a></div>
+          <div class="project-desc">Bluetooth-enabled robotics controller published on Google Play. Demonstrates full lifecycle ownership.</div>
+          <div class="project-tags">
+            <span class="project-tag">Android</span>
+            <span class="project-tag">Java</span>
+            <span class="project-tag">Bluetooth</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-name">🤖 Competitive Robotics</div>
+          <div class="project-desc">Autonomous robots for regional competitions. Awarded 1st place in multiple Line Follower contests.</div>
+          <div class="project-tags">
+            <span class="project-tag">C++</span>
+            <span class="project-tag">Arduino</span>
+            <span class="project-tag">Hardware</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- DEMO -->
       <section class="main-section cv-interactive-section" id="interactive-demo">
         <div class="section-header">
-          <div class="section-icon violet">🚀</div>
+          <div class="section-icon violet">🎬</div>
           <div class="section-title">Automation Live Demo</div>
         </div>
         <p style="font-size: 0.82rem; color: var(--main-text-muted); margin-bottom: 12px;">
-          Simulate a <strong>Cucumber BDD</strong> test execution for a Payment Gateway API.
+          Simulate a <strong>RestAssured + Cucumber BDD</strong> automated API test execution.
         </p>
-        <button id="run-demo-btn" class="btn-run">▶ Run Tests</button>
+        <button id="run-demo-btn" class="btn-run">▶ Run Cucumber Suite</button>
 
         <div class="interactive-demo-container">
           <div class="terminal-header">
             <div class="mac-dots"><div class="mac-dot red"></div><div class="mac-dot yellow"></div><div class="mac-dot green"></div></div>
-            qa-automation-demo — bash
+            ~/projects/payment-automation — bash
           </div>
           <div class="terminal-body">
             <div class="panel-left">
               <pre><code class="gherkin-text"><span class="gherkin-kw">Feature:</span> Payment Gateway
   <span class="gherkin-kw">Scenario:</span> Valid Payment
-    <span class="gherkin-kw">Given</span> valid auth token
-    <span class="gherkin-kw">When</span> POST "/api/v1/pay"
+    <span class="gherkin-kw">Given</span> auth token is valid
+    <span class="gherkin-kw">When</span> POST "/api/pay"
     <span class="gherkin-kw">Then</span> status is <span class="gherkin-str">200</span></code></pre>
             </div>
             <div class="panel-right" id="demo-console">
-              <div style="color: #6e7681; font-style: italic;">Ready to run...</div>
+              <div style="color: #6e7681; font-style: italic;">Waiting...</div>
             </div>
           </div>
         </div>
@@ -863,6 +989,7 @@
     </main>
   </div>
 
+  <!-- Chatbot Widget -->
   <div class="chat-widget">
     <div class="chat-button" id="chat-toggle"><span>🤖</span></div>
     <div class="chat-window" id="chat-window">
@@ -879,7 +1006,7 @@
   </div>
 
   <script>
-    // --- Demo Logic ---
+    // --- Cucumber Demo ---
     document.getElementById('run-demo-btn').addEventListener('click', function() {
       const consoleDiv = document.getElementById('demo-console');
       const btn = this;
@@ -889,9 +1016,9 @@
 
       const logs = [
         { text: '> mvn test', class: 'log-info', delay: 200 },
-        { text: 'Starting BDD Suite...', class: 'log-text', delay: 800 },
-        { text: '✔ Given valid auth token', class: 'log-success', delay: 1500 },
-        { text: '✔ When POST "/api/v1/pay"', class: 'log-success', delay: 2200 },
+        { text: 'Starting BDD Tests...', class: 'log-text', delay: 800 },
+        { text: '✔ Given auth token is valid', class: 'log-success', delay: 1500 },
+        { text: '✔ When POST "/api/pay"', class: 'log-success', delay: 2200 },
         { text: '✔ Then status is 200', class: 'log-success', delay: 2800 },
         { text: 'BUILD SUCCESS', class: 'log-info', delay: 3500 }
       ];
@@ -930,7 +1057,7 @@
         ]
       },
       profile: {
-        text: "Emmanuel es **Senior SDET** con +10 años de experiencia en sistemas de misión crítica.",
+        text: "Emmanuel es **Senior SDET** con +10 años de experiencia en sistemas de salud y financieros.",
         next: "initial"
       },
       stack: {
@@ -938,15 +1065,15 @@
         next: "initial"
       },
       finance: {
-        text: "Tiene amplia experiencia automatizando **pasarelas de pago** y validando flujos financieros.",
+        text: "Ha liderado la automatización en **pasarelas de pago**, validando flujos de autorización y liquidación.",
         next: "initial"
       },
       ai: {
-        text: "Lidera la implementación de **QA aumentado por IA**, usando agentes para optimizar pruebas.",
+        text: "Pionero en **QA aumentado por IA**, integrando herramientas como Antigravity y Claude para optimizar el ciclo de vida del software.",
         next: "initial"
       },
       status: {
-        text: "Disponible para retos remotos o internacionales. Tiene **Visa Americana** vigente.",
+        text: "Abierto a nuevos retos. Tiene **Visa Americana** vigente y disponibilidad inmediata.",
         next: "initial"
       }
     };
@@ -967,6 +1094,7 @@
       indicator.className = 'typing-indicator';
       indicator.innerHTML = '<div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>';
       chatMessages.appendChild(indicator);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
       
       setTimeout(() => {
         indicator.remove();
@@ -994,4 +1122,5 @@
     });
   </script>
 </body>
+
 </html>
